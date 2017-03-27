@@ -1,7 +1,7 @@
 #include "AppClass.h"
 void AppClass::InitWindow(String a_sWindowName)
 {
-	super::InitWindow("SLERP - YOUR USER NAME GOES HERE"); // Window Name
+	super::InitWindow("SLERP - Christopher Brown"); // Window Name
 
 	//Setting the color to black
 	m_v4ClearColor = vector4(0.0f);
@@ -47,10 +47,74 @@ void AppClass::Update(void)
 	float fEarthHalfRevTime = 0.5f * m_fDay; // Move for Half a day
 	float fMoonHalfOrbTime = 14.0f * m_fDay; //Moon's orbit is 28 earth days, so half the time for half a route
 
+#pragma region Earth Rotation
+
+	glm::quat earthQ1 = glm::angleAxis(0.0f, vector3(0.0f, 0.0f, 1.0f));
+	quaternion earthQ2 = glm::angleAxis(359.0f, vector3(0.0f, 0.0f, 1.0f)); //if 360 there is a div by 0 somewhere
+	quaternion earthQ3;
+
+	glm::quat earthQ4 = glm::angleAxis(0.0f, vector3(0.0f, 0.0f, 1.0f));
+	quaternion earthQ5 = glm::angleAxis(359.0f, vector3(0.0f, 0.0f, 1.0f)); //if 360 there is a div by 0 somewhere
+	quaternion earthQ6;
+
+	//rotate around sun
+	float fEarthPercentage = MapValue((float)fRunTime, 0.0f, (float)fEarthHalfOrbTime, 0.0f, 1.0f);
+
+	//revolutions
+	float fEarthRotPercentage = MapValue((float)fRunTime, 0.0f, fEarthHalfRevTime, 0.0f, 1.0f);
+
+	earthQ3 = glm::mix(earthQ1, earthQ2, fEarthPercentage);
+
+	earthQ6 = glm::mix(earthQ4, earthQ5, fEarthRotPercentage);
+
+	matrix4 m_m4Earth = IDENTITY_M4;
+	
+	matrix4 rotEarth = glm::mat4_cast(earthQ3);
+
+	matrix4 transEarth = glm::translate(vector3(11.0f,0.0f,0.0f)); //translate the earth from the center
+
+	matrix4 selfRotEarth = glm::mat4_cast(earthQ6);
+
+	matrix4 scaleEarth = glm::scale(vector3(0.524f));
+
+	matrix4 earthMatrix = rotEarth * transEarth * scaleEarth;
+
+	m_m4Earth = rotEarth * transEarth * selfRotEarth * scaleEarth;
+
+#pragma endregion
+
+#pragma region Moon Rotation
+	
+	glm::quat moonQ1 = glm::angleAxis(0.0f, vector3(0.0f, 0.0f, 1.0f));
+	quaternion moonQ2 = glm::angleAxis(359.0f, vector3(0.0f, 0.0f, 1.0f)); //if 360 there is a div by 0 somewhere
+	quaternion moonQ3;
+
+	float fMoonPercentage = MapValue((float)fRunTime, 0.0f, (float)fMoonHalfOrbTime, 0.0f, 1.0f);
+
+	moonQ3 = glm::mix(moonQ1, moonQ2, fMoonPercentage);
+
+	matrix4 m_m4Moon = IDENTITY_M4;
+		
+	matrix4 rotMoon = earthMatrix * glm::mat4_cast(moonQ3);
+
+	matrix4 transMoon = glm::translate(vector3(2.0f, 0.0f, 0.0f)); //translate the Moon from the center
+
+	matrix4 scaleMoon = glm::scale(vector3(0.141f));
+
+	m_m4Moon = rotMoon * transMoon * scaleMoon;
+
+#pragma endregion
+
+#pragma region Sun Matrix
+	
+	matrix4 m_m4Sun = glm::scale(vector3(5.936f));
+
+#pragma endregion
+
 	//Setting the matrices
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Sun");
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Earth");
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Moon");
+	m_pMeshMngr->SetModelMatrix(m_m4Sun, "Sun");
+	m_pMeshMngr->SetModelMatrix(m_m4Earth, "Earth");
+	m_pMeshMngr->SetModelMatrix(m_m4Moon, "Moon");
 
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddInstanceToRenderList("ALL");
@@ -58,6 +122,23 @@ void AppClass::Update(void)
 	static int nEarthOrbits = 0;
 	static int nEarthRevolutions = 0;
 	static int nMoonOrbits = 0;
+
+
+	if (fEarthRotPercentage == 1.0f)
+	{
+		nEarthRevolutions++;
+	}
+
+	if (fEarthPercentage == 1.0f)
+	{
+		nEarthOrbits++;
+	}
+
+	if (fMoonPercentage == 1.0f)
+	{
+		nMoonOrbits++;
+	}
+
 
 	//Indicate the FPS
 	int nFPS = m_pSystem->GetFPS();
@@ -106,6 +187,8 @@ void AppClass::Display(void)
 	}
 	
 	m_pMeshMngr->Render(); //renders the render list
+
+	m_pMeshMngr->ClearRenderList(); //Reset the Render list after render
 
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
 }
