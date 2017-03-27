@@ -1,0 +1,39 @@
+﻿  Main.cpp
+  AppClassControls.cpp
+  AppClass.cpp
+  Generating Code...
+  E07s_LERP.vcxproj -> C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\Z_DELETE\E07s_LERPD.exe
+  E07s_LERP.vcxproj -> C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\Z_DELETE\E07s_LERPD.pdb (Full PDB)
+  A subdirectory or file C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\_Binary\ already exists.
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\GL\bin\glew32.dll
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\GL\bin\glut32.dll
+  2 File(s) copied
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\bin\2015\ReEng_VS15.dll
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\bin\2015\ReEng_VS15_d.dll
+  2 File(s) copied
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\SFML\bin\sfml-system-2.dll
+  1 File(s) copied
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\SFML\bin\sfml-window-2.dll
+  1 File(s) copied
+  A subdirectory or file C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\_Binary\Shaders\ already exists.
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Basic.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Basic.vs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\BasicColor.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\BasicColor.vs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Color.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Color.vs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\PassThrough.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\PassThrough.vs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Phong.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Phong.vs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\REShader.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\REShader.vs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\REShaderInv.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\REShaderMC.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Skybox.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Skybox.vs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Test.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\Test.vs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\TextShader.fs
+  C:\Users\Chris\Documents\GitHub\ReEngineApp_2016s-master\include\RE\Shaders\TextShader.vs
+  20 File(s) copied
